@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/course")
 @RequiredArgsConstructor
@@ -23,5 +25,14 @@ public class CourseController {
 
         Long courseId = courseService.addCourse(createCourseRequest, teacherId);
         return new ResponseEntity<>("Course added with id -" + courseId, HttpStatus.CREATED);
+    }
+
+    @PostMapping
+    public ResponseEntity<String> enrollStudents(@RequestParam List<Long> studentIds,
+                                                 @RequestParam Long teacherId,
+                                                 @RequestParam Long courseId) {
+        Long studentID = studentService.addStudent(name, teacherId);
+        return new ResponseEntity<>("Student added with id -" + studentID, HttpStatus.CREATED);
+
     }
 }

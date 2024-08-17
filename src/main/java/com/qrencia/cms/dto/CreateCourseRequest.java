@@ -13,8 +13,8 @@ public class CreateCourseRequest {
     private String description;
     private Double cost;
     private String status;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private String startDate;
+    private String endDate;
     private String image;
 
 }
