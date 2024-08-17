@@ -5,6 +5,8 @@ import com.qrencia.cms.entity.Course;
 import com.qrencia.cms.repository.CourseRepository;
 import com.qrencia.cms.service.CourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,10 +18,10 @@ public class CourseController {
     private final CourseService courseService;
 
     @PostMapping
-    public String addCourse(@RequestBody CreateCourseRequest createCourseRequest,
-                            @RequestParam Long teacherId) {
+    public ResponseEntity<String> addCourse(@RequestBody CreateCourseRequest createCourseRequest,
+                                            @RequestParam Long teacherId) {
 
         Long courseId = courseService.addCourse(createCourseRequest, teacherId);
-        return "Course added with id -"+courseId;
+        return new ResponseEntity<>("Course added with id -" + courseId, HttpStatus.CREATED);
     }
 }
