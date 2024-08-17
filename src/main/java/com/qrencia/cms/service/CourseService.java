@@ -18,6 +18,7 @@ public class CourseService {
 
     private final CourseRepository courseRepository;
     private final TeacherRepository teacherRepository;
+    private final StudentRepository studentRepository;
 
     public Long addCourse(CreateCourseRequest course, Long teacherId) {
 
@@ -38,5 +39,12 @@ public class CourseService {
     public List<Course> getAllCourses(Long teacherId) {
 
         return courseRepository.findByTeacherId(teacherId);
+    }
+
+    public void enrollStudents(Long teacherId, List<Long> studentId, Long courseId) {
+       Optional<Course> courseOptional = courseRepository.findByTeacherIdAndCourse(teacherId, courseId);
+       if(courseOptional.isEmpty()) {
+           throw new RuntimeException("course not found");
+       }
     }
 }

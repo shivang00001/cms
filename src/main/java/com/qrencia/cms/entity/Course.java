@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,15 +29,21 @@ public class Course {
     private LocalDateTime createdOnDate;
     private String image;
     private Long teacherId;
+    private List<Long> studentId;
+
 
     public Course(CreateCourseRequest createCourseRequest) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
 
         this.title = createCourseRequest.getTitle();
         this.description = createCourseRequest.getDescription();
         this.cost = createCourseRequest.getCost();
         this.status = createCourseRequest.getStatus();
-        this.startDate = createCourseRequest.getStartDate();
-        this.endDate = createCourseRequest.getEndDate();
+
+        this.startDate = LocalDateTime.parse(createCourseRequest.getStartDate(), formatter);
+        this.endDate = LocalDateTime.parse(createCourseRequest.getEndDate(), formatter);
         this.image = createCourseRequest.getImage();
         this.createdOnDate = LocalDateTime.now();
 
