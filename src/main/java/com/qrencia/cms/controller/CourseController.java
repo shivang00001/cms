@@ -31,8 +31,8 @@ public class CourseController {
     public ResponseEntity<String> enrollStudents(@RequestParam List<Long> studentIds,
                                                  @RequestParam Long teacherId,
                                                  @RequestParam Long courseId) {
-        Long studentID = studentService.addStudent(name, teacherId);
-        return new ResponseEntity<>("Student added with id -" + studentID, HttpStatus.CREATED);
+        courseService.enrollStudents(teacherId,studentIds, courseId );
+        return new ResponseEntity<>("Students enrolled" , HttpStatus.CREATED);
 
     }
 }

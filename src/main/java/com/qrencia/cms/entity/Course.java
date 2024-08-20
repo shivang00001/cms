@@ -29,7 +29,7 @@ public class Course {
     private LocalDateTime createdOnDate;
     private String image;
     private Long teacherId;
-    private List<Long> studentId;
+    private String studentId;
 
 
     public Course(CreateCourseRequest createCourseRequest) {
