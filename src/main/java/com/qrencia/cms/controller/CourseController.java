@@ -27,7 +27,7 @@ public class CourseController {
         return new ResponseEntity<>("Course added with id -" + courseId, HttpStatus.CREATED);
     }
 
-    @PostMapping
+    @PostMapping("/enroll-students")
     public ResponseEntity<String> enrollStudents(@RequestParam List<Long> studentIds,
                                                  @RequestParam Long teacherId,
                                                  @RequestParam Long courseId) {

@@ -46,7 +46,7 @@ public class CourseService {
     }
 
     public void enrollStudents(Long teacherId, List<Long> studentId, Long courseId) {
-        Optional<Course> courseOptional = courseRepository.findByTeacherIdAndCourse(teacherId, courseId);
+        Optional<Course> courseOptional = courseRepository.findByIdAndTeacherId(courseId, teacherId);
         if (courseOptional.isEmpty()) {
             throw new CourseNotFoundException();
         }

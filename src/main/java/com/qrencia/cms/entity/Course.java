@@ -3,6 +3,7 @@ package com.qrencia.cms.entity;
 import com.qrencia.cms.dto.CreateCourseRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "course")
 public class Course {
 
