@@ -15,6 +15,7 @@ public class CMSControllerAdvice {
     public ResponseEntity<String> handlingTeacherNotFound(Exception ex){
      return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(CourseNotFoundException.class)
     public ResponseEntity<String> handlingCourseNotFound(Exception ex){
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
